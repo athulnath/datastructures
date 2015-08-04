@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cstdlib>
 #include "src/StackL.h"
 
 using namespace std;
@@ -7,12 +8,10 @@ using namespace std;
 int main(void) {
 
 	StackL<int> *testObj = new StackL<int>();
-	testObj->push(12);
-	testObj->push(13);
-	testObj->push(14);
-	testObj->push(15);
-	testObj->push(16);
 
+	for(int i = 0; i< 100000; i++) {
+		testObj->push(rand() * 100 + 1);	
+	}
 	
 	testObj->printStack();
 
@@ -21,6 +20,7 @@ int main(void) {
 	testObj->printStack();
 	cout<<testObj->peek()<<endl;
 	testObj->printStack();
+
 	delete testObj;
 
 	return 0;

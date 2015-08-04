@@ -14,6 +14,7 @@ public:
 	void push(X data);
 	X pop();
 	X peek();
+	bool isEmpty();
 	void printStack();
 };
 
@@ -25,11 +26,16 @@ template <class X> StackL<X>::~StackL() {
 	delete root;
 }
 
+template <class X> bool StackL<X>::isEmpty() {
+	return !root;
+}
+
 template <class X> void StackL<X>::push(X data) {
 	Node<X> *tmpNode = new Node<X>();
 	tmpNode->setData(data);
 	if(root == NULL) {
 		root = tmpNode;
+		root->setNext(NULL);
 	} else {
 		tmpNode->setNext(root);
 		root = tmpNode;
@@ -46,9 +52,14 @@ template <class X> void StackL<X>::printStack() {
 }
 
 template <class X> X StackL<X>::pop() {
-	X tmp = root->getData();
-	root = root->getNext();
-	return tmp;
+	if(!isEmpty()) {
+		X tmp = root->getData();
+		root = root->getNext();
+		return tmp;
+	}
+
+	X tmp;
+	return tmp;	
 }
 
 template <class X> X StackL<X>::peek() {

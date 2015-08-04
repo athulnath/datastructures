@@ -14,7 +14,7 @@ public:
 };
 
 template <class X> Node<X>::Node() {
-	data = new int();
+	data = new X();
 	next = NULL;
 }
 
