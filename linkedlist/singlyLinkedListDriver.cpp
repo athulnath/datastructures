@@ -17,5 +17,17 @@ int main(void) {
 
 	list->printList();
 
+	list->deleteNode(-1);
+
+	list->printList();
+
+	list->deleteNode(4);
+
+	list->printList();
+
+	list->deleteNode(-2);
+
+	list->printList();
+
 	delete list;
 }

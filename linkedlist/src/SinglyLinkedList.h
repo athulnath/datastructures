@@ -12,6 +12,7 @@ template <class X> class SinglyLinkedList {
 
 		void push(X data);
 		void append(X data);
+		void deleteNode(X data);
 		void printList();
 
 };
@@ -56,6 +57,29 @@ template <class X> void SinglyLinkedList<X>::append(X data) {
 	}
 	current->setNext(newnode);
 }
+
+template<class X> void SinglyLinkedList<X>::deleteNode(X data) {
+	
+	Node<X> *current = head;
+	Node<X> *previous = head;
+
+	//check for head itself
+	if(current->getNext() && current->getData() == data) {
+		head = current->getNext();
+		delete current;
+		return;
+	}
+
+	while(current->getNext() && current->getData() != data) {
+		previous = current;
+		current = current->getNext();
+	}
+
+	if(current == NULL ) return;
+
+	previous->setNext(current->getNext());
+	delete current;
+} 
 
 template <class X> void SinglyLinkedList<X>::printList() {
 	Node<X>* current = head;
